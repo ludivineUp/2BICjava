@@ -3,7 +3,8 @@ package com.nfs.bookstore.entities;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED) //une table apr classe
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy = InheritanceType.JOINED) //une table apr classe
 // une table pour toutes les filles et la mère SINGLE_TABLE
 @Table(name = "books")
 public class Book {

@@ -3,7 +3,6 @@ package com.nfs.bookstore.servlet.listener;
 import com.nfs.bookstore.dao.DaoFactory;
 import com.nfs.bookstore.dao.PersistenceManager;
 import com.nfs.bookstore.entities.*;
-import com.nfs.bookstore.utils.Util;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -32,17 +31,16 @@ public class BookStoreListener implements ServletContextListener, HttpSessionLis
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         //initFakeData(se);
-        se.getSession().setAttribute("authors",DaoFactory.getAuthorDao().getAll());
         List<String> ls = new ArrayList<>();
         for(Language l : Language.values()){
             ls.add(l.toString());
         }
         se.getSession().setAttribute("languages",ls);
         se.getSession().setAttribute("cities",DaoFactory.getCityDao().getAll());
-        System.out.println("end init data");
     }
 
     private void initFakeData(HttpSessionEvent se) {
+        // without db
         List<Author> authors = new ArrayList<>();
         authors.add(new Author(0,"Asimoz", "Isaac"));
         authors.add(new Author(1,"Gudule"));

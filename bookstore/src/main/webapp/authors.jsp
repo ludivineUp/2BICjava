@@ -20,8 +20,10 @@
                  <th>Nom</th>
                  <th> Prénom</th>
                  <th>Pseudonyme</th>
+                 <th>Mettre à jour</th>
+                 <th>Supprimer</th>
              </tr>
-             <c:forEach items="${authors}" var="author">
+             <c:forEach items="${authorlist}" var="author">
                  <tr>
                      <td>
                          <c:if test="${!empty author.lastname}">${author.lastname}</c:if>
@@ -31,6 +33,12 @@
                      </td>
                      <td>
                          <c:if test="${!empty author.pseudo}">${author.pseudo}</c:if>
+                     </td>
+                     <td>
+                         <a href="<%= request.getContextPath()%>/manage-author?id=${author.id}&method=update">Mettre à jour</a>
+                     </td>
+                     <td>
+                         <a href="<%= request.getContextPath()%>/manage-author?id=${author.id}&method=delete">Supprimer</a>
                      </td>
                  </tr>
              </c:forEach>

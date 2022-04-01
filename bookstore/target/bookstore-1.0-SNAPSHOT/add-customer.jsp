@@ -13,7 +13,7 @@
 </head>
 <body>
 Rentrer les informations correspondant au nouvel client.
-<form method="POST" action="cutomers">
+<form method="POST" action="customers">
     <table>
         <tr>
             <td>Nom : </td>
@@ -22,7 +22,7 @@ Rentrer les informations correspondant au nouvel client.
         <tr>
             <td>Ville : </td>
             <td>
-                <select name="author">
+                <select name="city">
                     <c:forEach items="${cities}" var="c">
                         <option value="${c.id}">
                                 ${c.name}
@@ -34,7 +34,7 @@ Rentrer les informations correspondant au nouvel client.
         <tr>
             <td>Langue : </td>
             <td>
-                <select name="author">
+                <select name="lg">
                     <c:forEach items="${languages}" var="l">
                         <option value="${l}">
                                 ${l}

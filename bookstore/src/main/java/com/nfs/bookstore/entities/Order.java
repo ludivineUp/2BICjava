@@ -4,6 +4,8 @@ import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Entity
@@ -25,6 +27,15 @@ public class Order {
     @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idcustomer")
     private Customer customer;
+    @Transient
+    private String dayAsString;
+    @Transient
+    private DateTimeFormatter dtf;
+
+    public Order(){
+        books = new ArrayList<>();
+        dtf = DateTimeFormatter.ofPattern("dd/MM/yy");
+    }
 
     public int getId() {
         return id;
@@ -35,9 +46,13 @@ public class Order {
     public LocalDate getDay() {
         return day;
     }
+
     public void setDay(LocalDate day) {
-        this.orderday = java.sql.Date.valueOf(day);
-        this.day = day;
+        if(day != null) {
+            this.orderday = java.sql.Date.valueOf(day);
+            this.dayAsString = day.format(dtf);
+            this.day = day;
+        }
     }
     public List<Book> getBooks() {
         return books;
@@ -58,5 +73,18 @@ public class Order {
 
     public void setOrderday(Date orderday) {
         this.orderday = orderday;
+        this.day = new java.sql.Date(orderday.getTime()).toLocalDate();
+        this.dayAsString = day.format(dtf);
+    }
+
+    public String getDayAsString() {
+        this.day = new java.sql.Date(orderday.getTime()).toLocalDate();
+        this.dayAsString = day.format(dtf);
+        return dayAsString;
+    }
+
+    public void setDayAsString(String dayAsString) {
+        if(dayAsString != null)
+            this.dayAsString = dayAsString;
     }
 }

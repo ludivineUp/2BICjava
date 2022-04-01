@@ -11,10 +11,12 @@
     <tr>
         <td><a href="<%= request.getContextPath()%>/index.jsp">Accueil</a></td>
         <td><a href="<%= request.getContextPath()%>/author">Liste des auteurs</a></td>
-        <td><a href="<%= request.getContextPath()%>/add-author.html">Ajouter un auteur</a></td>
+        <td><a href="<%= request.getContextPath()%>/add-author.jsp">Ajouter un auteur</a></td>
         <td><a href="<%= request.getContextPath()%>/books">Liste des livres</a></td>
         <td><a href="<%= request.getContextPath()%>/add-book.jsp">Ajouter un livre</a></td>
         <td><a href="<%= request.getContextPath()%>/customers">Liste des clients</a></td>
         <td><a href="<%= request.getContextPath()%>/add-customer.jsp">Ajouter un client</a></td>
+        <td><a href="<%= request.getContextPath()%>/orders">Liste des commandes</a></td>
+        <td><a href="<%= request.getContextPath()%>/add-order.jsp">Ajouter une commande</a></td>
     </tr>
 </table>
